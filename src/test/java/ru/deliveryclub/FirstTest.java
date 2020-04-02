@@ -17,8 +17,17 @@ public class FirstTest extends WebDriver {
         Assert.assertEquals("Доставка еды из ресторанов Москвы за 15-30 минут! Delivery Club", title);
 
     }
+
     @Test
     public void secondTest() {
+        driver.get("https://www.delivery-club.ru/moscow");
+        driver.findElementByXPath("//*[@id=\"content\"]/div/div[3]/div[1]/div[2]/button").click();
+        checkBox("2");
+    }
+
+
+    @Test
+    public void thirdTest() {
         driver.get("https://www.delivery-club.ru/moscow");
         WebElement adress = driver.findElementByClassName("address-input__wrap");
         driver.findElementByXPath("//button[@class='header-login-button']").click();
