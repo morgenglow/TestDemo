@@ -25,9 +25,24 @@ public class FirstTest extends WebDriver {
         checkBox("2");
     }
 
+    @Test
+    public void thirdTest() throws InterruptedException {
+        driver.manage().window().fullscreen();
+        driver.get("https://www.delivery-club.ru/moscow");
+        driver.findElementByXPath("//input[@placeholder=\"Укажите адрес доставки\"]").sendKeys("Москва, ул. Мироновская, 25");
+        String address = driver.findElementByXPath("//div[@class=\"address-suggest-item__container address-suggest-item__container_at-header\"][1]").getText();
+        Assert.assertEquals("Москва, Мироновская улица, 25 ", address);
+        Thread.sleep(600000L);
+        driver.findElementByXPath("//div[@class=\"address-suggest-item__container address-suggest-item__container_at-header\"][1]").click();
+        driver.findElementByXPath("//span[@class='delivery-time-button__status']").click();
+        driver.findElementByXPath("//div[@class='delivery-time-form__field-name   Hover' and text()=\"Указать время\"]").click();
+        driver.findElementByXPath("//li[@class=\'dropdown__options-el is-selected\']").click();
+        driver.findElementByXPath("//li[contains(.,\"00:00\")]").click();
+
+    }
 
     @Test
-    public void thirdTest() {
+    public void forthTest() {
         driver.get("https://www.delivery-club.ru/moscow");
         WebElement adress = driver.findElementByClassName("address-input__wrap");
         driver.findElementByXPath("//button[@class='header-login-button']").click();
